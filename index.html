@@ -9,131 +9,234 @@
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#0b2c4e;--navy2:#071d36;--maroon:#7a0c10;--gold:#f2b705;--cream:#fcf4e6;--line:#e6d3a6;--ink:#1d2733;
---serif:'Fraunces',Georgia,'Times New Roman',serif;--sans:'Figtree',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
---pad:clamp(1.1rem,5vw,4rem);--max:76rem}
+:root{
+  --navy:#0b2c4e;--navy2:#071d36;--maroon:#7a0c10;--gold:#f2b705;--cream:#fcf4e6;--line:#e6d3a6;--ink:#1d2733;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:'Figtree',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --pad:clamp(1.15rem,4.5vw,3.5rem);--max:72rem;--header:4.35rem;
+}
 *{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
-body{font:clamp(1rem,.95rem + .25vw,1.125rem)/1.65 var(--sans);color:var(--ink);background:#fff;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header) + .75rem)}
+body{font:clamp(1rem,.92rem + .28vw,1.125rem)/1.65 var(--sans);color:var(--ink);background:#fff;-webkit-text-size-adjust:100%}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--pad)}
-section{padding-block:clamp(3rem,8vw,6rem)}
-h1,h2,h3{font-family:var(--serif);line-height:1.1;letter-spacing:-.01em}
-h2{font-size:clamp(1.9rem,1.3rem + 2.6vw,3.2rem);color:var(--maroon);font-weight:800;margin-bottom:1rem}
-.lead{max-width:60ch;font-size:1.1em}
-.btn{display:inline-block;background:var(--gold);color:var(--navy2);font-weight:700;text-decoration:none;padding:.85rem 1.5rem;border-radius:.4rem;transition:transform .15s,background .15s}
-.btn:hover{background:#ffcb2e;transform:translateY(-2px)}
-.btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.7)}
-.btn.ghost:hover{background:rgba(255,255,255,.12)}
+section{padding-block:clamp(3.25rem,7vw,5.75rem)}
+h1,h2,h3{font-family:var(--serif);line-height:1.12;letter-spacing:-.015em;font-weight:700}
+h2{font-size:clamp(1.85rem,1.25rem + 2.2vw,2.85rem);color:var(--maroon);margin-bottom:.85rem}
+.lead{max-width:58ch;font-size:1.08em;color:#3a4654}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--maroon);margin-bottom:.75rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;background:var(--gold);color:var(--navy2);font-weight:700;text-decoration:none;padding:.9rem 1.45rem;border-radius:.35rem;border:2px solid var(--gold);transition:transform .18s ease,background .18s ease,color .18s ease,border-color .18s ease}
+.btn:hover{background:#ffcb2e;border-color:#ffcb2e;transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.75)}
+.btn.ghost:hover{background:rgba(255,255,255,.12);border-color:#fff;transform:translateY(-2px)}
 
 /* header */
-header{position:sticky;top:0;z-index:20;background:var(--navy);border-bottom:3px solid var(--gold);padding-top:env(safe-area-inset-top)}
-.bar{display:flex;align-items:center;gap:1rem;justify-content:space-between;min-height:4rem;max-width:var(--max);margin:auto;padding:.4rem var(--pad)}
-.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff}
-.brand img{width:2.9rem;height:auto}
-.brand b{font-family:var(--serif);font-size:1.05rem;line-height:1.1;display:block}
-.brand small{color:var(--gold);font-size:.75rem}
-nav{display:flex;gap:1.4rem}
-nav a{color:#fff;text-decoration:none;font-weight:500;font-size:.95rem;padding:.3rem 0;border-bottom:2px solid transparent}
-nav a:hover{border-color:var(--gold)}
-.menu{display:none;background:none;border:2px solid rgba(255,255,255,.6);color:#fff;border-radius:.35rem;padding:.4rem .7rem;font:inherit;cursor:pointer}
-@media (max-width:56rem){
- .menu{display:block}
- nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--navy);border-bottom:3px solid var(--gold);padding:.5rem var(--pad) 1rem}
- nav.open{display:flex}
- nav a{padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.12)}
+header{position:sticky;top:0;z-index:30;background:rgba(11,44,78,.97);backdrop-filter:blur(10px);border-bottom:3px solid var(--gold);padding-top:env(safe-area-inset-top)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:var(--header);max-width:var(--max);margin:auto;padding:.35rem var(--pad)}
+.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:#fff;min-width:0}
+.brand img{width:2.85rem;height:auto;flex-shrink:0}
+.brand b{font-family:var(--serif);font-size:clamp(1rem,.9rem + .4vw,1.15rem);line-height:1.15;display:block}
+.brand small{display:block;color:var(--gold);font-size:.72rem;letter-spacing:.04em;margin-top:.1rem}
+nav{display:flex;align-items:center;gap:clamp(.85rem,1.5vw,1.35rem)}
+nav a{color:rgba(255,255,255,.92);text-decoration:none;font-weight:500;font-size:.92rem;padding:.35rem 0;border-bottom:2px solid transparent;transition:border-color .15s,color .15s}
+nav a:hover{color:#fff;border-color:var(--gold)}
+.menu{display:none;background:none;border:2px solid rgba(255,255,255,.55);color:#fff;border-radius:.3rem;padding:.4rem .75rem;font:inherit;font-weight:600;cursor:pointer}
+@media (max-width:58rem){
+  .menu{display:block}
+  nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--navy);border-bottom:3px solid var(--gold);padding:.35rem var(--pad) 1rem}
+  nav.open{display:flex}
+  nav a{padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.12)}
 }
 
 /* hero */
-.hero{position:relative;color:#fff;background:var(--navy2);min-height:min(46rem,calc(100svh - 4rem));display:grid;align-items:end;padding:0;isolation:isolate;overflow:hidden}
-.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;z-index:-2;animation:drift 18s ease-out both}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(7,29,54,.96) 8%,rgba(7,29,54,.55) 52%,rgba(7,29,54,.15))}
-@keyframes drift{from{transform:scale(1.08)}to{transform:scale(1)}}
-.hero .wrap{padding-block:clamp(2.5rem,8vw,5rem);display:grid;gap:1.4rem;grid-template-columns:minmax(0,1fr) auto;align-items:end}
-.tag{display:inline-block;color:var(--gold);font-weight:700;font-size:.95rem;margin-bottom:.8rem}
-.hero h1{font-size:clamp(2.6rem,1.2rem + 7vw,6.2rem);font-weight:800;margin-bottom:.9rem}
-.hero p{max-width:46ch;font-size:1.15em;color:#eef2f7}
-.cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.6rem}
-.crest{width:clamp(6rem,17vw,13rem);filter:drop-shadow(0 8px 24px rgba(0,0,0,.5))}
-@media (max-width:40rem){.hero .wrap{grid-template-columns:1fr}.crest{display:none}}
-@media (orientation:landscape) and (max-height:34rem){.hero{min-height:auto}.hero .wrap{padding-block:2rem}.hero h1{font-size:clamp(2rem,6vw,3.2rem)}}
+.hero{position:relative;color:#fff;background:var(--navy2);min-height:min(42rem,calc(100svh - var(--header)));display:grid;align-items:end;padding:0;isolation:isolate;overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;z-index:-2;animation:drift 20s ease-out both}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(105deg,rgba(7,29,54,.94) 0%,rgba(7,29,54,.72) 46%,rgba(7,29,54,.28) 100%),
+  linear-gradient(to top,rgba(7,29,54,.95) 0%,rgba(7,29,54,.35) 48%,rgba(7,29,54,.12) 100%)}
+@keyframes drift{from{transform:scale(1.07)}to{transform:scale(1)}}
+@keyframes rise{from{opacity:0;transform:translateY(1.1rem)}to{opacity:1;transform:none}}
+.hero .wrap{padding-block:clamp(2.75rem,9vw,5.5rem);display:grid;grid-template-columns:minmax(0,1.15fr) auto;gap:clamp(1.5rem,4vw,3rem);align-items:end}
+.hero-copy{animation:rise .9s ease both .12s;max-width:38rem}
+.hero .place{color:var(--gold);font-weight:700;font-size:.95rem;letter-spacing:.03em;margin-bottom:.85rem}
+.hero h1{font-size:clamp(2.35rem,1.1rem + 5.5vw,4.85rem);font-weight:800;margin-bottom:.7rem;max-width:14ch}
+.hero .tagline{font-family:var(--serif);font-size:clamp(1.2rem,1rem + 1.1vw,1.65rem);font-weight:500;color:#f7e7b0;margin-bottom:1rem}
+.hero p{max-width:40ch;font-size:1.08em;color:#e8eef5}
+.cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.65rem}
+.crest{width:clamp(7rem,16vw,11.5rem);filter:drop-shadow(0 10px 28px rgba(0,0,0,.45));animation:rise 1s ease both .35s}
+@media (max-width:42rem){.hero .wrap{grid-template-columns:1fr}.crest{display:none}}
+@media (orientation:landscape) and (max-height:34rem){.hero{min-height:auto}.hero .wrap{padding-block:2rem}.hero h1{font-size:clamp(2rem,5.5vw,3rem)}}
 
-/* interview banner */
-.alert{background:var(--maroon);color:#fff;border-left:.7rem solid var(--gold)}
-.alert .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-between;align-items:center;padding-block:1.1rem}
-.alert strong{font-family:var(--serif);font-size:clamp(1.1rem,.9rem + 1.2vw,1.7rem)}
-.alert a{font-weight:700;color:var(--gold)}
+/* alert */
+.alert{background:var(--maroon);color:#fff;border-bottom:3px solid var(--gold)}
+.alert .wrap{display:flex;flex-wrap:wrap;gap:.65rem 2rem;justify-content:space-between;align-items:center;padding-block:1rem}
+.alert strong{font-family:var(--serif);font-size:clamp(1.05rem,.9rem + 1vw,1.45rem);font-weight:700}
+.alert a{font-weight:700;color:var(--gold);text-decoration:none;border-bottom:1px solid transparent}
+.alert a:hover{border-color:var(--gold)}
 
 /* grades */
-.grades{background:var(--cream)}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1.2rem;margin-top:2rem}
-.card{background:#fff;border:1px solid var(--line);border-left:6px solid var(--maroon);padding:1.4rem 1.4rem 1.5rem}
-.card h3{font-size:1.5rem;color:var(--maroon);margin-bottom:.3rem}
-.card.boardy{border-left-color:var(--gold)}
-.grades .cards .card:nth-child(2){margin-top:1.2rem}
-.grades .cards .card:nth-child(3){margin-top:2.4rem}
-@media (max-width:52rem){.grades .cards .card:nth-child(n){margin-top:0}}
-.card .big{font-family:var(--serif);font-size:1.15rem;font-weight:600}
+.grades{background:
+  radial-gradient(ellipse at top right,rgba(242,183,5,.12),transparent 42%),
+  linear-gradient(180deg,var(--cream),#fff 72%)}
+.grade-list{display:grid;gap:0;margin-top:2.25rem;border-top:1px solid var(--line)}
+.grade{display:grid;grid-template-columns:minmax(8rem,14rem) 1fr;gap:1rem 2rem;padding:1.45rem 0;border-bottom:1px solid var(--line);align-items:start}
+.grade h3{font-size:clamp(1.35rem,1.1rem + .8vw,1.7rem);color:var(--maroon);margin:0}
+.grade .big{font-family:var(--serif);font-size:1.2rem;font-weight:600;color:var(--navy);margin-bottom:.25rem}
+.grade p{color:#3a4654}
+.grade .note{display:inline-block;margin-top:.45rem;font-size:.92rem;font-weight:600;color:var(--maroon)}
+.grade.boardy .note{color:#8a6a00}
+@media (max-width:36rem){.grade{grid-template-columns:1fr;gap:.35rem}}
 
 /* boarding */
-.boarding{background:var(--navy);color:#fff}
-.boarding .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:clamp(1.5rem,5vw,4rem);align-items:center}
+.boarding{background:
+  linear-gradient(145deg,var(--navy) 0%,var(--navy2) 100%);
+  color:#fff;position:relative;overflow:hidden}
+.boarding::after{content:"";position:absolute;inset:auto -10% -40% 40%;height:70%;background:radial-gradient(circle,rgba(242,183,5,.14),transparent 65%);pointer-events:none}
+.boarding .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.75rem,5vw,3.5rem);align-items:center}
 .boarding h2{color:#fff}
-.boarding h2 u{text-decoration-color:var(--gold);text-decoration-thickness:.12em;text-underline-offset:.2em}
-.boarding .pill{display:inline-block;border:2px solid var(--gold);color:var(--gold);padding:.35rem .9rem;border-radius:2rem;margin:.2rem .4rem .8rem 0;font-weight:700}
-.boarding img{border:6px solid var(--gold);aspect-ratio:4/3;object-fit:cover;width:100%}
+.boarding h2 span{color:var(--gold)}
+.boarding .lead{color:#d7e0ea}
+.levels{display:flex;flex-wrap:wrap;gap:.55rem;margin:1.15rem 0 1.35rem}
+.levels span{display:inline-block;border:1.5px solid var(--gold);color:var(--gold);padding:.4rem .85rem;font-weight:700;font-size:.9rem}
+.boarding figure{margin:0;position:relative}
+.boarding img{width:100%;aspect-ratio:4/3;object-fit:cover;border:5px solid var(--gold);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+@media (max-width:48rem){.boarding .wrap{grid-template-columns:1fr}}
 
 /* life */
-.facets{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:1.2rem;margin-top:2rem}
-.facet{background:var(--cream);border:1px solid var(--line);border-left:6px solid var(--maroon);padding:1.3rem}
-.facet h3{font-size:1.25rem;color:var(--maroon);margin-bottom:.4rem}
-.facet.wide{grid-column:1/-1;background:#fff;border-color:var(--maroon);border-left-width:6px}
-.facet.wide p{max-width:75ch}
+.life{background:#fff}
+.life-intro{max-width:62ch}
+.life-lead{margin-top:2.25rem;background:var(--navy);color:#fff;padding:clamp(1.4rem,3vw,1.85rem) clamp(1.25rem,3vw,1.75rem);border-left:5px solid var(--gold)}
+.life-lead h3{color:var(--gold);font-size:clamp(1.25rem,1.1rem + .6vw,1.55rem);margin-bottom:.55rem}
+.life-lead p{max-width:72ch;color:#e4ebf3}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:0;border:1px solid var(--line);border-top:0}
+.feature{padding:1.45rem 1.35rem 1.55rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff,var(--cream))}
+.feature:nth-child(3n){border-right:0}
+.feature:nth-last-child(-n+3){border-bottom:0}
+.feature h3{font-size:1.2rem;color:var(--maroon);margin-bottom:.4rem}
+.feature p{color:#3a4654;font-size:.98em}
+@media (max-width:56rem){
+  .features{grid-template-columns:1fr 1fr}
+  .feature:nth-child(3n){border-right:1px solid var(--line)}
+  .feature:nth-child(2n){border-right:0}
+  .feature:nth-last-child(-n+3){border-bottom:1px solid var(--line)}
+  .feature:nth-last-child(-n+2){border-bottom:0}
+}
+@media (max-width:34rem){
+  .features{grid-template-columns:1fr}
+  .feature,.feature:nth-child(2n),.feature:nth-child(3n){border-right:0}
+  .feature:nth-last-child(-n+3),.feature:nth-last-child(-n+2){border-bottom:1px solid var(--line)}
+  .feature:last-child{border-bottom:0}
+}
 
 /* gallery */
-.gallery{background:var(--navy2);padding-block:clamp(2rem,6vw,4rem)}
-.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:.8rem}
-.strip figure{position:relative;overflow:hidden;aspect-ratio:4/3;border:3px solid var(--gold)}
-.strip img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.gallery{background:var(--navy2);padding-block:clamp(2.25rem,5.5vw,3.75rem)}
+.gallery .wrap{display:grid;gap:1.1rem}
+.gallery .kicker{color:var(--gold);margin:0}
+.strip{display:grid;grid-template-columns:repeat(6,1fr);gap:.65rem}
+.strip figure{position:relative;overflow:hidden;margin:0;aspect-ratio:4/3;border:2px solid var(--gold);grid-column:span 2}
+.strip figure:nth-child(1){grid-column:span 3}
+.strip figure:nth-child(2){grid-column:span 3}
+.strip img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
 .strip figure:hover img{transform:scale(1.05)}
-.strip figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.6rem .8rem .5rem;background:linear-gradient(transparent,rgba(7,29,54,.9));color:#fff;font-size:.9rem;font-style:italic}
+.strip figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.8rem .75rem .55rem;background:linear-gradient(transparent,rgba(7,29,54,.92));color:#fff;font-size:.88rem;font-style:italic}
+@media (max-width:52rem){
+  .strip{grid-template-columns:1fr 1fr}
+  .strip figure,.strip figure:nth-child(1),.strip figure:nth-child(2){grid-column:span 1}
+}
+@media (max-width:30rem){.strip{grid-template-columns:1fr}}
 
 /* motto */
-.motto{background:var(--navy);color:#fff;border-top:6px solid var(--gold)}
-.motto .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:clamp(2rem,6vw,4.5rem);align-items:center}
-.motto h2{color:#fff;font-size:clamp(2rem,1.2rem + 3.5vw,4rem)}
+.motto{background:
+  radial-gradient(ellipse at bottom left,rgba(242,183,5,.12),transparent 45%),
+  var(--navy);color:#fff;border-top:6px solid var(--gold)}
+.motto .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,6vw,4rem);align-items:center}
+.motto h2{color:#fff;font-size:clamp(2rem,1.2rem + 3vw,3.5rem)}
 .motto h2 span{color:var(--gold)}
-.motto blockquote{font-family:var(--serif);font-size:clamp(1.15rem,1rem + .9vw,1.6rem);line-height:1.45;border-left:4px solid var(--gold);padding-left:1.2rem;margin-top:1.4rem}
-.vm{display:grid;gap:1.6rem}
-.vm dt{color:var(--gold);font-weight:700;font-size:.9rem;letter-spacing:.08em}
-.vm dd{margin:.2rem 0 0;font-family:var(--serif);font-size:clamp(1.2rem,1rem + 1vw,1.7rem);line-height:1.3}
-.vm div{padding-bottom:1.4rem;border-bottom:1px solid rgba(255,255,255,.2)}
-.vm div:last-child{border:0}
+.motto blockquote{font-family:var(--serif);font-size:clamp(1.1rem,.98rem + .7vw,1.4rem);line-height:1.5;border-left:4px solid var(--gold);padding-left:1.15rem;margin-top:1.35rem;color:#e8eef5}
+.vm{display:grid;gap:0;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.16);padding:1.35rem 1.4rem}
+.vm div{padding:1.05rem 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.vm div:first-child{padding-top:.25rem}
+.vm div:last-child{border:0;padding-bottom:.25rem}
+.vm dt{color:var(--gold);font-weight:700;font-size:.78rem;letter-spacing:.12em}
+.vm dd{margin:.35rem 0 0;font-family:var(--serif);font-size:clamp(1.15rem,1rem + .85vw,1.5rem);line-height:1.3}
+@media (max-width:48rem){.motto .wrap{grid-template-columns:1fr}}
 
-/* ten points */
-.points{background:var(--cream)}
-.points ol{list-style:none;padding:0;margin-top:2.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));gap:1.6rem 3rem;counter-reset:p}
-.points li{display:grid;grid-template-columns:3rem 1fr;gap:1rem;counter-increment:p}
-.points li::before{content:counter(p);width:2.6rem;height:2.6rem;border-radius:50%;background:var(--maroon);color:#fff;display:grid;place-items:center;font-weight:700;margin-top:.1rem}
-.points h3{font-family:var(--sans);font-size:1.08rem;font-weight:700;color:var(--navy);line-height:1.3}
+/* points */
+.points{background:
+  linear-gradient(180deg,var(--cream),#fff 55%)}
+.points ol{list-style:none;padding:0;margin-top:2.2rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 2.75rem;counter-reset:p}
+.points li{display:grid;grid-template-columns:2.7rem 1fr;gap:.9rem;counter-increment:p}
+.points li::before{content:counter(p,decimal-leading-zero);width:2.55rem;height:2.55rem;border-radius:50%;background:var(--maroon);color:#fff;display:grid;place-items:center;font-weight:700;font-size:.85rem;margin-top:.1rem;letter-spacing:.02em}
+.points h3{font-family:var(--sans);font-size:1.05rem;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:.3rem}
 .points li:first-child h3{color:var(--maroon)}
-.sign{margin-top:2.5rem;text-align:center;font-family:var(--serif);font-weight:600;font-size:clamp(1.2rem,1rem + 1vw,1.7rem);color:var(--navy)}
+.points p{color:#3a4654;font-size:.97em}
+.sign{margin-top:2.75rem;text-align:center;font-family:var(--serif);font-weight:600;font-size:clamp(1.15rem,1rem + .9vw,1.55rem);color:var(--navy);padding-top:1.75rem;border-top:1px solid var(--line)}
+@media (max-width:42rem){.points ol{grid-template-columns:1fr}}
 
-/* contact */
-.contact{background:var(--navy);color:#fff;border-top:6px solid var(--gold);text-align:center}
-.contact h2{color:#fff}
-.tel{display:inline-block;font-family:var(--serif);font-weight:800;font-size:clamp(2.2rem,1rem + 6vw,4.5rem);color:#fff;text-decoration:none;margin:.4rem 0 .6rem}
-.tel:hover{color:var(--gold)}
-.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:1.6rem;text-align:left;max-width:50rem;margin:2.5rem auto 0;padding-top:2rem;border-top:1px solid var(--gold)}
-.info dt{color:var(--gold);font-size:.85rem;font-weight:700;letter-spacing:.06em}
-.info dd{margin:.2rem 0 0;overflow-wrap:anywhere}
-.info small{display:block;color:#cfd8e3}
-footer{background:var(--navy2);color:#cfd8e3;text-align:center;padding:1.2rem var(--pad) calc(1.2rem + env(safe-area-inset-bottom));font-size:.9rem;border-top:1px solid rgba(255,255,255,.1)}
-footer b{color:var(--gold);font-weight:500}
+/* contact / prefooter */
+.contact{background:var(--cream);border-top:1px solid var(--line);padding:0}
+.contact .wrap{max-width:none;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;padding:0}
+.contact-copy,.contact-panel{padding:clamp(2.5rem,5vw,3.75rem) var(--pad);display:flex;flex-direction:column;min-height:100%}
+.contact-copy{justify-content:space-between;gap:1.75rem;border-right:1px solid var(--line);align-items:center;text-align:center}
+.contact-copy > div:first-child{display:flex;flex-direction:column;align-items:center;width:100%}
+.contact-logo{width:clamp(6.5rem,14vw,9.5rem);height:auto;margin-bottom:1.15rem}
+.contact h2{color:var(--navy);font-size:clamp(1.65rem,1.2rem + 1.5vw,2.2rem);margin-bottom:.55rem}
+.contact .lead{margin-bottom:0;max-width:42ch;margin-inline:auto}
+.contact-actions{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;justify-content:center;margin-top:auto}
+.contact-actions .phone{font-weight:700;color:var(--navy);text-decoration:none;font-size:1.05rem}
+.contact-actions .phone:hover{color:var(--maroon)}
+.contact-panel{background:#fff}
+.contact-panel h3{font-family:var(--sans);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--maroon);margin-bottom:1.15rem}
+.info{display:grid;gap:0;flex:1;align-content:space-between}
+.info div{display:grid;gap:.2rem;padding:.85rem 0;border-bottom:1px solid var(--line)}
+.info div:first-child{padding-top:0}
+.info div:last-child{border:0;padding-bottom:0}
+.info dt{color:#6a7583;font-size:.8rem;font-weight:600;letter-spacing:.04em}
+.info dd{margin:0;overflow-wrap:anywhere;color:var(--navy);font-weight:500}
+.info a{text-decoration:none;color:var(--navy)}
+.info a:hover{color:var(--maroon)}
+.info small{display:block;color:#6a7583;font-weight:400;margin-top:.15rem}
+@media (max-width:48rem){
+  .contact .wrap{grid-template-columns:1fr}
+  .contact-copy{border-right:0;border-bottom:1px solid var(--line)}
+}
+
+/* footer */
+footer{background:var(--navy);color:#c5d0dc;border-top:3px solid var(--gold);padding:0 0 calc(1.1rem + env(safe-area-inset-bottom))}
+footer > .wrap{max-width:none;width:100%;padding-inline:0}
+.foot{display:grid;grid-template-columns:repeat(3,1fr);gap:0;align-items:stretch;padding:0;border-bottom:1px solid rgba(255,255,255,.12)}
+.foot > *{padding:clamp(2rem,4vw,2.75rem) var(--pad);display:flex;flex-direction:column;min-height:100%;border-right:1px solid rgba(255,255,255,.12)}
+.foot > *:last-child{border-right:0}
+.foot-brand{gap:.85rem}
+.foot-brand-inner{display:flex;gap:.85rem;align-items:flex-start}
+.foot-brand img{width:2.6rem;height:auto;flex-shrink:0}
+.foot-brand b{display:block;font-family:var(--serif);color:#fff;font-size:1.05rem;line-height:1.2;margin-bottom:.35rem}
+.foot-brand p{font-size:.92rem;color:#b8c5d3;max-width:34ch;margin-top:auto}
+.foot h3{font-family:var(--sans);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.85rem}
+.foot ul{list-style:none;padding:0;display:grid;gap:.5rem;margin-top:0}
+.foot a{color:#d7e0ea;text-decoration:none;font-size:.95rem}
+.foot a:hover{color:var(--gold)}
+.foot-meta{color:#b8c5d3;font-size:.95rem;line-height:1.65;margin-top:0}
+.foot-meta a{color:#fff}
+.foot-base{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;justify-content:space-between;align-items:center;padding:1.1rem var(--pad) 0;font-size:.88rem;color:#9aabbc}
+.foot-base b{color:var(--gold);font-weight:500}
+@media (max-width:48rem){
+  .foot{grid-template-columns:1fr 1fr}
+  .foot-brand{grid-column:1/-1;border-right:0;border-bottom:1px solid rgba(255,255,255,.12)}
+  .foot > *:nth-child(2){border-right:1px solid rgba(255,255,255,.12)}
+  .foot > *:last-child{border-right:0}
+}
+@media (max-width:30rem){
+  .foot{grid-template-columns:1fr}
+  .foot > *{border-right:0;border-bottom:1px solid rgba(255,255,255,.12)}
+  .foot > *:last-child{border-bottom:0}
+  .foot-brand{grid-column:auto}
+}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -143,7 +246,12 @@ footer b{color:var(--gold);font-weight:500}
   <a class="brand" href="#top"><img src="assets/logo.png" alt="The Prime Grade School crest"><span><b>The Prime Grade School</b><small>Education with Character</small></span></a>
   <button class="menu" aria-expanded="false" aria-controls="nav">Menu</button>
   <nav id="nav" aria-label="Main">
-   <a href="#grades">Grades</a><a href="#boarding">Boarding</a><a href="#life">Life at Prime Grade</a><a href="#about">Our Motto</a><a href="#program">10 Point Program</a><a href="#contact">Contact</a>
+   <a href="#grades">Grades</a>
+   <a href="#boarding">Boarding</a>
+   <a href="#life">School Life</a>
+   <a href="#about">Our Motto</a>
+   <a href="#program">10 Point Program</a>
+   <a href="#contact">Contact</a>
   </nav>
  </div>
 </header>
@@ -152,60 +260,100 @@ footer b{color:var(--gold);font-weight:500}
 <section class="hero" aria-label="Welcome">
  <img src="assets/building.jpg" alt="The three-storey classroom building of The Prime Grade School" fetchpriority="high">
  <div class="wrap">
-  <div>
-   <span class="tag">Enrolment open | 2027 academic year</span>
-   <h1>Enrol Now for 2027</h1>
-   <p>A place where every child grows in confidence and character.</p>
-   <div class="cta"><a class="btn" href="#contact">Call or visit to enrol</a><a class="btn ghost" href="#grades">Grades offered</a></div>
+  <div class="hero-copy">
+   <p class="place">Borabu, Nyamira County · Enrolment open for 2027</p>
+   <h1>The Prime Grade School</h1>
+   <p class="tagline">Education with Character</p>
+   <p>A place where every child grows in confidence and character. Enrol now for the 2027 academic year.</p>
+   <div class="cta">
+    <a class="btn" href="#contact">Call or visit to enrol</a>
+    <a class="btn ghost" href="#grades">Grades offered</a>
+   </div>
   </div>
   <img class="crest" src="assets/logo.png" alt="The Prime Grade School crest: an open book and torch, Education with Character">
  </div>
 </section>
 
-<div class="alert"><div class="wrap"><strong>New admission interviews start 3 November</strong><a href="tel:+254759770255">Call 0759 770 255</a></div></div>
+<div class="alert"><div class="wrap">
+ <strong>New admission interviews start 3 November</strong>
+ <a href="tel:+254759770255">Call 0759 770 255</a>
+</div></div>
 
 <section class="grades" id="grades"><div class="wrap">
+ <p class="kicker">Academic pathways</p>
  <h2>Grades offered</h2>
  <p class="lead">Join a school with a new library, an IT room and an equipped laboratory, plus music, sport and hands-on projects.</p>
- <div class="cards">
-  <article class="card"><h3>Pre-School</h3><p class="big">Playgroup, PP1 and PP2</p></article>
-  <article class="card"><h3>Primary School</h3><p class="big">Grade 1 to Grade 6</p><p>Boarding for Grades 4 to 6.</p></article>
-  <article class="card boardy"><h3>Junior School</h3><p class="big">Grade 7 to Grade 9</p><p>Boarding available.</p></article>
+ <div class="grade-list">
+  <article class="grade">
+   <h3>Pre-School</h3>
+   <div>
+    <p class="big">Playgroup, PP1 and PP2</p>
+   </div>
+  </article>
+  <article class="grade">
+   <h3>Primary School</h3>
+   <div>
+    <p class="big">Grade 1 to Grade 6</p>
+    <p class="note">Boarding for Grades 4 to 6.</p>
+   </div>
+  </article>
+  <article class="grade boardy">
+   <h3>Junior School</h3>
+   <div>
+    <p class="big">Grade 7 to Grade 9</p>
+    <p class="note">Boarding available.</p>
+   </div>
+  </article>
  </div>
 </div></section>
 
 <section class="boarding" id="boarding"><div class="wrap">
  <div>
-  <h2><u>Boarding</u> available</h2>
-  <span class="pill">Grades 4 to 6</span><span class="pill">Junior School: Grades 7 to 9</span>
+  <p class="kicker" style="color:var(--gold)">Residence</p>
+  <h2><span>Boarding</span> available</h2>
+  <div class="levels">
+   <span>Grades 4 to 6</span>
+   <span>Junior School: Grades 7 to 9</span>
+  </div>
   <p class="lead">New facilities include a modern ablution block, a kitchen and dining hall, and dormitories, with structured study time and closer academic support.</p>
  </div>
- <img src="assets/compound.jpg" alt="Pupils lined up on the school compound under the national flag" loading="lazy">
+ <figure>
+  <img src="assets/compound.jpg" alt="Pupils lined up on the school compound under the national flag" loading="lazy">
+ </figure>
 </div></section>
 
-<section id="life"><div class="wrap">
+<section class="life" id="life"><div class="wrap">
+ <p class="kicker">Beyond the classroom</p>
  <h2>Life at Prime Grade</h2>
- <div class="facets">
-  <article class="facet wide"><h3>Dedicated Teachers, Individual Attention</h3><p>A dedicated and committed team of qualified teachers and instructors provides caring, engaging teaching and individual attention. Through clear guidance and encouragement, we help each learner build confidence, make steady academic progress and develop character and talents.</p></article>
-  <article class="facet"><h3>Library</h3><p>Over 1,500 new books to feed young minds.</p></article>
-  <article class="facet"><h3>IT Room</h3><p>A fully functional computer room supporting hands-on digital learning, creativity and confident, responsible use of technology.</p></article>
-  <article class="facet"><h3>Equipped Laboratory</h3><p>A well-equipped laboratory for hands-on science learning.</p></article>
-  <article class="facet"><h3>Hands-on Learning</h3><p>Practical, age-appropriate projects bring lessons to life, building creativity, problem-solving and everyday life skills.</p></article>
-  <article class="facet"><h3>Arts, Sport &amp; Clubs</h3><p>Music, singing, dance and drama nurture expression; soccer builds fitness and teamwork. Young Farmers and Environmental clubs encourage practical skills and care for nature.</p></article>
-  <article class="facet"><h3>School Transport</h3><p>Safe school vans and buses to carry our children.</p></article>
+ <p class="lead life-intro">From dedicated teaching to libraries, labs, clubs and transport — every part of school life is built to support learning and character.</p>
+ <article class="life-lead">
+  <h3>Dedicated Teachers, Individual Attention</h3>
+  <p>A dedicated and committed team of qualified teachers and instructors provides caring, engaging teaching and individual attention. Through clear guidance and encouragement, we help each learner build confidence, make steady academic progress and develop character and talents.</p>
+ </article>
+ <div class="features">
+  <article class="feature"><h3>Library</h3><p>Over 1,500 new books to feed young minds.</p></article>
+  <article class="feature"><h3>IT Room</h3><p>A fully functional computer room supporting hands-on digital learning, creativity and confident, responsible use of technology.</p></article>
+  <article class="feature"><h3>Equipped Laboratory</h3><p>A well-equipped laboratory for hands-on science learning.</p></article>
+  <article class="feature"><h3>Hands-on Learning</h3><p>Practical, age-appropriate projects bring lessons to life, building creativity, problem-solving and everyday life skills.</p></article>
+  <article class="feature"><h3>Arts, Sport &amp; Clubs</h3><p>Music, singing, dance and drama nurture expression; soccer builds fitness and teamwork. Young Farmers and Environmental clubs encourage practical skills and care for nature.</p></article>
+  <article class="feature"><h3>School Transport</h3><p>Safe school vans and buses to carry our children.</p></article>
  </div>
 </div></section>
 
-<section class="gallery" aria-label="Photo gallery"><div class="wrap"><div class="strip">
- <figure><img src="assets/pupils.jpg" alt="Pupils in school uniform standing together" loading="lazy"><figcaption>Learning together</figcaption></figure>
- <figure><img src="assets/bus-side.jpg" alt="The yellow school bus" loading="lazy"><figcaption>Safe school transport</figcaption></figure>
- <figure><img src="assets/bus-pupil.jpg" alt="A pupil standing beside the school van" loading="lazy"><figcaption>Safe school transport</figcaption></figure>
- <figure><img src="assets/ride.jpg" alt="Pupils waving from inside the school bus" loading="lazy"><figcaption>The ride back home</figcaption></figure>
- <figure><img src="assets/classroom.jpg" alt="The classroom building across the school grounds" loading="lazy"><figcaption>The classroom building</figcaption></figure>
-</div></div></section>
+<section class="gallery" aria-label="Photo gallery"><div class="wrap">
+ <p class="kicker">Campus moments</p>
+ <div class="strip">
+  <figure><img src="assets/pupils.jpg" alt="Pupils in school uniform standing together" loading="lazy"><figcaption>Learning together</figcaption></figure>
+  <figure><img src="assets/bus-side.jpg" alt="The yellow school bus" loading="lazy"><figcaption>Safe school transport</figcaption></figure>
+  <figure><img src="assets/bus-pupil.jpg" alt="A pupil standing beside the school van" loading="lazy"><figcaption>Safe school transport</figcaption></figure>
+  <figure><img src="assets/ride.jpg" alt="Pupils waving from inside the school bus" loading="lazy"><figcaption>The ride back home</figcaption></figure>
+  <figure><img src="assets/classroom.jpg" alt="The classroom building across the school grounds" loading="lazy"><figcaption>The classroom building</figcaption></figure>
+ </div>
+</div></section>
 
 <section class="motto" id="about"><div class="wrap">
  <div>
+  <p class="kicker" style="color:var(--gold)">Who we are</p>
   <h2>Education <span>with</span> Character</h2>
   <blockquote>The school’s motto is inspired by the proven belief that education without a solid foundation in character building is like a ship without a compass: equipped for a long journey, but lacking the moral direction to reach a worthy destination safely.</blockquote>
  </div>
@@ -217,6 +365,7 @@ footer b{color:var(--gold);font-weight:500}
 </div></section>
 
 <section class="points" id="program"><div class="wrap">
+ <p class="kicker">Guiding principles</p>
  <h2>The Prime Grade 10 Point Program</h2>
  <ol>
   <li><div><h3>The Love and Fear of God</h3><p>Our foremost guiding principle: placing God at the heart of school life and nurturing faith, humility, compassion and respect for others.</p></div></li>
@@ -234,19 +383,69 @@ footer b{color:var(--gold);font-weight:500}
 </div></section>
 
 <section class="contact" id="contact"><div class="wrap">
- <h2>Interviews for new admissions start 3 November</h2>
- <p>Call or visit the school office to enrol</p>
- <a class="tel" href="tel:+254759770255">Tel: 0759 770 255</a>
- <dl class="info">
-  <div><dt>EMAIL</dt><dd><a href="mailto:info@primegradeschool.org">info@primegradeschool.org</a></dd></div>
-  <div><dt>WEBSITE</dt><dd><a href="https://www.primegradeschool.org">www.primegradeschool.org</a></dd></div>
-  <div><dt>P.O. BOX</dt><dd>79438 - 00200 Nairobi</dd></div>
-  <div><dt>LOCATION</dt><dd>Borabu, Nyamira County<small>Nyansiongo / Keroka area</small></dd></div>
- </dl>
+ <div class="contact-copy">
+  <div>
+   <img class="contact-logo" src="assets/logo.png" alt="The Prime Grade School crest">
+   <p class="kicker">Admissions</p>
+   <h2>Interviews for new admissions start 3 November</h2>
+   <p class="lead">Call or visit the school office to enrol for the 2027 academic year.</p>
+  </div>
+  <div class="contact-actions">
+   <a class="btn" href="tel:+254759770255">Call 0759 770 255</a>
+   <a class="phone" href="mailto:info@primegradeschool.org">Or email the school office</a>
+  </div>
+ </div>
+ <aside class="contact-panel" aria-label="School contact details">
+  <h3>Contact details</h3>
+  <dl class="info">
+   <div><dt>Phone</dt><dd><a href="tel:+254759770255">0759 770 255</a></dd></div>
+   <div><dt>Email</dt><dd><a href="mailto:info@primegradeschool.org">info@primegradeschool.org</a></dd></div>
+   <div><dt>Website</dt><dd><a href="https://www.primegradeschool.org">www.primegradeschool.org</a></dd></div>
+   <div><dt>P.O. Box</dt><dd>79438 - 00200 Nairobi</dd></div>
+   <div><dt>Location</dt><dd>Borabu, Nyamira County<small>Nyansiongo / Keroka area</small></dd></div>
+  </dl>
+ </aside>
 </div></section>
 </main>
 
-<footer>The Prime Grade School | <b>Education with Character</b> | 0759 770 255 | primegradeschool.org</footer>
+<footer>
+ <div class="wrap">
+  <div class="foot">
+   <div class="foot-brand">
+    <div class="foot-brand-inner">
+     <img src="assets/logo.png" alt="">
+     <div>
+      <b>The Prime Grade School</b>
+      <p>Education with Character. Serving families in Borabu, Nyamira County.</p>
+     </div>
+    </div>
+   </div>
+   <div>
+    <h3>Explore</h3>
+    <ul>
+     <li><a href="#grades">Grades offered</a></li>
+     <li><a href="#boarding">Boarding</a></li>
+     <li><a href="#life">School life</a></li>
+     <li><a href="#program">10 Point Program</a></li>
+     <li><a href="#contact">Admissions</a></li>
+    </ul>
+   </div>
+   <div>
+    <h3>Visit or call</h3>
+    <div class="foot-meta">
+     <a href="tel:+254759770255">0759 770 255</a><br>
+     <a href="mailto:info@primegradeschool.org">info@primegradeschool.org</a><br>
+     Borabu, Nyamira County<br>
+     Nyansiongo / Keroka area
+    </div>
+   </div>
+  </div>
+  <div class="foot-base">
+   <span>The Prime Grade School · <b>Education with Character</b></span>
+   <span>primegradeschool.org</span>
+  </div>
+ </div>
+</footer>
 
 <script>
 (function(){var b=document.querySelector('.menu'),n=document.getElementById('nav');
