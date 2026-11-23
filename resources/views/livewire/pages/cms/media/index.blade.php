@@ -1,0 +1,16 @@
+<?php
+use App\Models\Cms\Media;
+use App\Support\CmsMediaUploader;
+use Livewire\Attributes\Layout;
+use Livewire\Features\SupportFileUploads\WithFileUploads;
+use Livewire\Volt\Component;
+new #[Layout('layouts.app')] class extends Component {
+    use WithFileUploads;
+    public $file;public string $folder='general',$alt_text='';
+    public function upload(CmsMediaUploader $uploader): void {$this->validate(['file'=>['required','file','mimes:jpeg,png,jpg,webp,svg','max:4096'],'folder'=>['required','in:general,logos,facilities,gallery,announcements,programs'],'alt_text'=>['nullable','string','max:255']]);$path=$uploader->upload($this->file,$this->folder);Media::create(['name'=>$this->file->getClientOriginalName(),'path'=>$path,'mime_type'=>$this->file->getMimeType(),'size'=>$this->file->getSize(),'alt_text'=>$this->alt_text,'folder'=>$this->folder]);$this->reset(['file','alt_text']);session()->flash('success','Media uploaded.');}
+    public function delete(int $id,CmsMediaUploader $uploader): void {$media=Media::findOrFail($id);$path=$media->path;$uploader->deleteIfUnreferenced($path);if(Media::whereKey($id)->exists())session()->flash('error','This file is referenced by content and cannot be deleted.');else session()->flash('success','Media deleted.');}
+    public function with(): array{return ['mediaItems'=>Media::latest()->get(),'uploader'=>app(CmsMediaUploader::class)];}
+}; ?>
+<div class="space-y-6"><h1 class="text-2xl font-semibold">Media Library</h1>@if(session('success'))<div class="rounded bg-green-100 p-3 text-green-800">{{ session('success') }}</div>@endif @if(session('error'))<div class="rounded bg-red-100 p-3 text-red-800">{{ session('error') }}</div>@endif
+<form wire:submit="upload" class="grid gap-4 rounded-lg bg-white p-5 shadow sm:grid-cols-4"><div class="sm:col-span-2"><x-input-label for="file" value="Image"/><input id="file" type="file" wire:model="file" accept="image/*,.svg" class="mt-2 block w-full text-sm"/><x-input-error :messages="$errors->get('file')" class="mt-2"/></div><div><x-input-label for="folder" value="Folder"/><select id="folder" wire:model="folder" class="mt-1 block w-full rounded-md border-gray-300">@foreach(['general','logos','facilities','gallery','announcements','programs'] as $value)<option value="{{ $value }}">{{ str($value)->title() }}</option>@endforeach</select></div><div><x-input-label for="alt_text" value="Alt text"/><x-text-input id="alt_text" wire:model="alt_text" class="mt-1 block w-full"/></div><div class="sm:col-span-4"><x-primary-button wire:loading.attr="disabled">Upload</x-primary-button></div></form>
+<div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">@forelse($mediaItems as $item)<article class="overflow-hidden rounded-lg bg-white shadow"><img src="{{ $uploader->url($item->path) }}" alt="{{ $item->alt_text }}" class="h-40 w-full object-cover"><div class="p-4"><p class="truncate text-sm font-medium" title="{{ $item->name }}">{{ $item->name }}</p><p class="text-xs text-gray-500">{{ $item->folder }} · {{ number_format(($item->size??0)/1024,1) }} KB</p><button wire:click="delete({{ $item->id }})" wire:confirm="Delete this media file if it is unused?" class="mt-3 text-sm text-red-600">Delete</button></div></article>@empty<p class="text-gray-500">No media files.</p>@endforelse</div></div>
